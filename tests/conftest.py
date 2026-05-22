@@ -3,6 +3,7 @@ from typing import Any
 
 import pytest
 
+
 @dataclass
 class FakeResponse:
     status_code: int = 200
@@ -12,14 +13,17 @@ class FakeResponse:
 
     def json(self) -> dict[str, Any] | list[Any]:
         return self.json_data or {}
-    
+
+
 @pytest.fixture
 def correlation_id() -> str:
     return "11111111-1111-1111-1111-111111111111"
 
+
 @pytest.fixture
 def sample_ncm() -> str:
     return "12345678"
+
 
 @pytest.fixture
 def sample_required_attributes() -> list[dict[str, Any]]:
@@ -35,8 +39,9 @@ def sample_required_attributes() -> list[dict[str, Any]]:
             "nome": "Atributo Texto",
             "tipo": "TEXTO",
             "obrigatorio": True,
-        }
+        },
     ]
+
 
 @pytest.fixture
 def sample_product_payload() -> dict[str, Any]:
@@ -46,9 +51,10 @@ def sample_product_payload() -> dict[str, Any]:
         "descricao": "Produto de Teste",
         "atributos": [
             {"codigo_atributo": "ATTR_001", "valor": True},
-            {"codigo_atributo": "ATTR_002", "valor": "ABC"}
+            {"codigo_atributo": "ATTR_002", "valor": "ABC"},
         ],
     }
+
 
 @pytest.fixture
 def siscomex_success_response() -> FakeResponse:
@@ -61,6 +67,7 @@ def siscomex_success_response() -> FakeResponse:
             "payload_resumo": {},
         },
     )
+
 
 @pytest.fixture
 def siscomex_error_response() -> FakeResponse:

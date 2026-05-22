@@ -4,6 +4,7 @@ from src.siscomex.api_client import TSISCOMEXClient
 
 pytestmark = pytest.mark.integration
 
+
 def test_siscomex_client_integration_contract():
     """
     Testa integração do TSISCOMEXClient com o endpoint de consulta de dados do Siscomex.

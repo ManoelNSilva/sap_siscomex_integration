@@ -107,6 +107,20 @@ sap_siscomex_integration/
 
 ---
 
+## Comandos de qualidade e testes
+
+### Lint 
+`ruff check .`
+
+### Verificar formatação
+`black --check .` 
+
+### Formatar código
+`black .`
+
+## Testes 
+`pytest -q`
+
 ## Segurança
 
 - Nunca commitar `.env`, tokens, chaves ou segredos
