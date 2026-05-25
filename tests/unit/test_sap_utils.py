@@ -1,8 +1,9 @@
 import pytest
 
-import src.sap.utils as sap_utils 
+import src.sap.utils as sap_utils
 
 pytestmark = pytest.mark.unit
+
 
 def test_sap_utils_module_should_exist():
     """

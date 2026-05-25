@@ -21,6 +21,10 @@ Integração entre **SAP Business One (SAP B1)** e **Portal Único SISCOMEX** pa
 - **Instruções do projeto:** `docs/project/instructions.md`
 - **Padrões de nomenclatura:** `docs/project/naming_conventions.md`
 - **Implementação técnica SISCOMEX:** `docs/technical/siscomex_api_implementation.md`
+- **Estratégia de testes:** `docs/test/test_strategy.md`
+- **Matriz de rastreabilidade:** `docs/test/traceability_matrix.md`
+- **Plano de testes:** `docs/test/test_plan.md`
+- **Cenários de testes:** `docs/test/test_scenarios.md`
 
 > Em caso de conflito, o **SRS** é a fonte oficial para requisitos.
 
@@ -113,6 +117,32 @@ sap_siscomex_integration/
 - Nunca registrar credenciais em texto claro
 - Validar `.env` no `.gitignore`
 
+---
+
+## Qualidade de Código e Testes (Local)
+
+Comandos padrão do projeto:
+
+- `ruff check .`
+- `black --check .`
+- `black .`
+- `pytest -q`
+
+Fluxo recomendado:
+1. Rodar `ruff check .`
+2. Rodar `black --check .` (ou `black .` para corrigir)
+3. Rodar `pytest -q`
+
+---
+
+## Testes
+
+A execução de testes usa configuração central em `tests/pytest.ini` (testpaths, padrões e markers).
+
+Comandos:
+- `pytest -q`
+- `pytest -m unit -q`
+- `pytest -m integration -q`
 ---
 
 ## Fluxo Geral

@@ -8,6 +8,9 @@ Este documento descreve a estrutura de diretórios do projeto **SAP SISCOMEX Int
 
 ```plaintext
 sap_siscomex_integration/
+├── .github/                               
+│   └── workflows/
+│       └── ci.yml                        # Pipeline CI (lint, format, check, testes)
 ├── docs/                                 # Documentação do projeto
 │   ├── project/                          # Documentos de planejamento e requisitos
 │   │   ├── instructions.md               # Instruções gerais do projeto
@@ -21,6 +24,11 @@ sap_siscomex_integration/
 │   │   └── prompt_tests.md               # Diretrizes para testes
 │   ├── technical/                        # Documentação técnica de implementação
 │   │   └── siscomex_api_implementation.md
+│   └── test/                            # Documentação de testes
+│   |   ├── test_strategy.md             # Estratégia de testes
+│   |   ├── traceability_matrix.md       # Rastreabilidade requisito → caso → arquivo
+│   |   ├── test_plan.md                 # Plano executivo de testes
+│   |   └── test_scenarios.md            # Cenários base e incrementais (P0..P3)
 │   └── sap_fields.png                    # Imagem de referência dos campos SAP
 ├── src/                                  # Código-fonte principal
 │   ├── core/                             # Regras centrais de negócio
@@ -38,8 +46,11 @@ sap_siscomex_integration/
 ├── tests/                                # Testes automatizados
 │   ├── integration/                      # Testes de integração
 │   ├── unit/                             # Testes unitários
-│   └── conftest.py                       # Configuração global do pytest
+│   ├── conftest.py                       # Configuração global do pytest
+│   └── pytest.ini                        # Configuração de descoberta e markers do pytest
+
 ├── venv/                                 # Ambiente virtual local (não versionar)
+├── pyproject.toml                        # Configuração de ruff/black
 ├── .gitignore                            # Regras de arquivos ignorados no Git
 ├── README.md                             # Visão geral do projeto
 └── requirements.txt                      # Dependências Python
@@ -70,8 +81,14 @@ Cobertura automatizada:
 - **`unit/`**: validação isolada de funções/módulos.
 - **`integration/`**: validação ponta a ponta entre módulos e integrações.
 - **`conftest.py`**: fixtures e configuração do `pytest`.
+- **`pytest.ini`**: configuração do `pytest` (descoberta de testes, `addopts`, `markers`).
+
 
 ### 4) Arquivos de configuração
+- **`.github/workflows/ci.yml`**: pipeline CI para `push` e `pull_request` em `main`.
+- **`pyproject.toml`**: configuração padrão de qualidade (`ruff` e `black`).
+- **`tests/pytest.ini`**: configuração do `pytest` (testpaths, padrões de nome e markers).
+
 - **`.gitignore`**: ignora `venv/`, `.env`, cache Python etc.
 - **`requirements.txt`**: dependências necessárias.
 - **`README.md`**: onboarding e visão geral.

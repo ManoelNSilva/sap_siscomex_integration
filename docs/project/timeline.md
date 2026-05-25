@@ -46,7 +46,7 @@ Garantir que todos os pré-requisitos e estruturas estejam definidos antes do in
    **Modelo Responsável**: Modelo de Documentação e Modelo de Desenvolvimento.
 
 ✅ 2. **Definição de Requisitos**
-   ✅ Revisar o documento `instrucoes.md` e validar os requisitos com o gestor.
+   ✅ Revisar o documento `instructions.md` e validar os requisitos com o gestor.
    ✅ Identificar possíveis lacunas nos requisitos e documentá-las.
    **Modelo Responsável**: Modelo de Documentação.
 
@@ -241,4 +241,9 @@ Contínuo.
 
 # 📌 CONSIDERAÇÕES FINAIS
 
-Com esta atualização, o cronograma agora especifica claramente **qual modelo de IA será responsável por cada tarefa**, garantindo maior organização e clareza no desenvolvimento do projeto.
+Com esta atualização, o cronograma registra a conclusão da Fase 1 com:
+- Fluxo Git via PR validado;
+- Pipeline CI ativo e verde;
+- Padronização de qualidade com `ruff`/`black`;
+- Testes automatizados (`pytest`) em execução local e no CI;
+- Evidência local de testes: **11 passed**.
