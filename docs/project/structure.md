@@ -23,6 +23,7 @@ sap_siscomex_integration/
 │   │   ├── prompt_documentation.md       # Diretrizes para documentação
 │   │   └── prompt_tests.md               # Diretrizes para testes
 │   ├── technical/                        # Documentação técnica de implementação
+|   |   ├── architecture                  # Arquitetura da solução (fase 2)
 │   │   └── siscomex_api_implementation.md
 │   └── test/                            # Documentação de testes
 │   |   ├── test_strategy.md             # Estratégia de testes
@@ -64,8 +65,8 @@ sap_siscomex_integration/
 Centraliza toda a documentação:
 - **`project/`**: requisitos, estrutura, instruções e cronograma.
 - **`prompts/`**: guias para uso dos modelos de IA.
-- **`technical/`**: documentação técnica de integração (endpoints, políticas e contratos).
-
+- **`technical/`**: documentação técnica e de arquitetura (fluxo, módulos contratos e API SISCOMEX).
+- **`test/`**: Docmentação de estratégia, plano, cenários e eastreabilidade de testes. 
 > Observação: arquivos `docs/*.py` são referências legadas e não devem ser tratados como código principal de produção.
 
 ### 2) `src/`
@@ -109,4 +110,5 @@ Cobertura automatizada:
 
 - `docs/project/software_requirements.md`
 - `docs/project/naming_conventions.md`
+- `docs/technical/architecture.md`
 - `docs/technical/siscomex_api_implementation.md`

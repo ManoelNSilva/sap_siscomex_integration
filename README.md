@@ -18,6 +18,7 @@ Integração entre **SAP Business One (SAP B1)** e **Portal Único SISCOMEX** pa
 
 - **SRS (requisitos e critérios de aceite):** `docs/project/software_requirements.md`
 - **Estrutura do projeto:** `docs/project/structure.md`
+- **Arquitetura da solução:** `docs/technical/architecture.md`
 - **Instruções do projeto:** `docs/project/instructions.md`
 - **Padrões de nomenclatura:** `docs/project/naming_conventions.md`
 - **Implementação técnica SISCOMEX:** `docs/technical/siscomex_api_implementation.md`
@@ -67,7 +68,13 @@ sap_siscomex_integration/
 │   │   ├── prompt_documentation.md
 │   │   └── prompt_tests.md
 │   ├── technical/
+|   |   ├── architecture.md
 │   │   └── siscomex_api_implementation.md
+|   ├── test/
+|   |   ├── test_strategy.md
+|   |   ├── traceability_matrix.md
+|   |   ├── test_plan.md
+|   |   └── test_scenarios.md
 │   └── sap_fields.png
 ├── src/
 │   ├── core/
@@ -85,7 +92,8 @@ sap_siscomex_integration/
 ├── tests/
 │   ├── integration/
 │   ├── unit/
-│   └── conftest.py
+│   ├── conftest.py
+│   └── pytest.py
 ├── .gitignore
 ├── README.md
 └── requirements.txt
@@ -152,3 +160,5 @@ Comandos:
 3. Validar e integrar com SISCOMEX (`src/siscomex`)
 4. Registrar logs e status (`src/utils`)
 5. Validar com testes (`tests/unit` e `tests/integration`)
+
+> Referência de arquitetura: `docs/technical/architecture.md`

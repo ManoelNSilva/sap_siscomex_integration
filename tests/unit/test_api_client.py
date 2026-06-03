@@ -1,12 +1,17 @@
+from __future__ import annotations
 import pytest
 from src.siscomex.api_client import TSISCOMEXClient
 
 pytestmark = pytest.mark.unit
 
 
-def test_module_contract_should_expose_expected_client_methods():
+def test_cliente_expoe_metodos_esperados():
     """
-    Contrato mínimo esperado pelo SRS/documentação técnica.
+    Verifica se o cliente SISCOMEX expõe os métodos públicos esperados
+
+    Returns:
+    --------
+    None
     """
     expected_methods = {
         "get_required_attributes",
@@ -20,9 +25,13 @@ def test_module_contract_should_expose_expected_client_methods():
         assert hasattr(TSISCOMEXClient, method_name), method_name
 
 
-def test_client_should_be_able_to_instantiated_with_configuration():
+def test_cliente_instancia_com_configuracao_minima() -> None:
     """
-    O cliente deve ser instanciável com a configuração mínima necessária.
+    Verifica se o cliente pode ser instanciado com a configuração mínima necessária.
+
+    Returns:
+    --------
+    None
     """
     client = TSISCOMEXClient(
         base_url="https://portalunico.siscomex.gov.br/catp",
