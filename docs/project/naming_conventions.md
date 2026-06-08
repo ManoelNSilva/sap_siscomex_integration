@@ -69,6 +69,7 @@ class TProductManager:
     def remove_product(self, product_id):
         """Remove um produto existente."""
         pass
+```
 
 ### **4.2. Classes**
 - Devem ser nomeadas em **PascalCase**.
@@ -88,6 +89,7 @@ class TSAPServiceLayer:
 class TSISCOMEXClient:
     """Gerencia a comunicação com o Portal Único SISCOMEX."""
     pass
+```
 
 ### **4.3. Variáveis**
 - Devem ser nomeadas em snake_case.
@@ -99,6 +101,7 @@ class TSISCOMEXClient:
     product_data = {}
     response_status = "success"
     current_version = "1.0.0"
+```
 
 ### **4.4. Constantes**
 - Devem ser nomeadas em UPPER_SNAKE_CASE.
@@ -109,6 +112,7 @@ class TSISCOMEXClient:
     MAX_RETRIES = 5
     DEFAULT_TIMEOUT = 30
     API_BASE_URL = "https://api.siscomex.gov.br"
+```
 
 ## **5. Exemplos Práticos**
 Estrutura de Diretórios

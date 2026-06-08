@@ -18,9 +18,14 @@ Integração entre **SAP Business One (SAP B1)** e **Portal Único SISCOMEX** pa
 
 - **SRS (requisitos e critérios de aceite):** `docs/project/software_requirements.md`
 - **Estrutura do projeto:** `docs/project/structure.md`
+- **Arquitetura da solução:** `docs/technical/architecture.md`
 - **Instruções do projeto:** `docs/project/instructions.md`
 - **Padrões de nomenclatura:** `docs/project/naming_conventions.md`
 - **Implementação técnica SISCOMEX:** `docs/technical/siscomex_api_implementation.md`
+- **Estratégia de testes:** `docs/test/test_strategy.md`
+- **Matriz de rastreabilidade:** `docs/test/traceability_matrix.md`
+- **Plano de testes:** `docs/test/test_plan.md`
+- **Cenários de testes:** `docs/test/test_scenarios.md`
 
 > Em caso de conflito, o **SRS** é a fonte oficial para requisitos.
 
@@ -63,7 +68,13 @@ sap_siscomex_integration/
 │   │   ├── prompt_documentation.md
 │   │   └── prompt_tests.md
 │   ├── technical/
+|   |   ├── architecture.md
 │   │   └── siscomex_api_implementation.md
+|   ├── test/
+|   |   ├── test_strategy.md
+|   |   ├── traceability_matrix.md
+|   |   ├── test_plan.md
+|   |   └── test_scenarios.md
 │   └── sap_fields.png
 ├── src/
 │   ├── core/
@@ -81,7 +92,8 @@ sap_siscomex_integration/
 ├── tests/
 │   ├── integration/
 │   ├── unit/
-│   └── conftest.py
+│   ├── conftest.py
+│   └── pytest.py
 ├── .gitignore
 ├── README.md
 └── requirements.txt
@@ -115,6 +127,32 @@ sap_siscomex_integration/
 
 ---
 
+## Qualidade de Código e Testes (Local)
+
+Comandos padrão do projeto:
+
+- `ruff check .`
+- `black --check .`
+- `black .`
+- `pytest -q`
+
+Fluxo recomendado:
+1. Rodar `ruff check .`
+2. Rodar `black --check .` (ou `black .` para corrigir)
+3. Rodar `pytest -q`
+
+---
+
+## Testes
+
+A execução de testes usa configuração central em `tests/pytest.ini` (testpaths, padrões e markers).
+
+Comandos:
+- `pytest -q`
+- `pytest -m unit -q`
+- `pytest -m integration -q`
+---
+
 ## Fluxo Geral
 
 1. Ler dados no SAP (`src/sap`)
@@ -122,3 +160,5 @@ sap_siscomex_integration/
 3. Validar e integrar com SISCOMEX (`src/siscomex`)
 4. Registrar logs e status (`src/utils`)
 5. Validar com testes (`tests/unit` e `tests/integration`)
+
+> Referência de arquitetura: `docs/technical/architecture.md`

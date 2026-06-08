@@ -33,7 +33,7 @@ O projeto será dividido em **7 fases principais**, com subtarefas bem definidas
 
 ---
 
-## **1. Planejamento e Preparação**
+✅## **1. Planejamento e Preparação**
 
 ### **Objetivo**
 Garantir que todos os pré-requisitos e estruturas estejam definidos antes do início do desenvolvimento.
@@ -46,7 +46,7 @@ Garantir que todos os pré-requisitos e estruturas estejam definidos antes do in
    **Modelo Responsável**: Modelo de Documentação e Modelo de Desenvolvimento.
 
 ✅ 2. **Definição de Requisitos**
-   ✅ Revisar o documento `instrucoes.md` e validar os requisitos com o gestor.
+   ✅ Revisar o documento `instructions.md` e validar os requisitos com o gestor.
    ✅ Identificar possíveis lacunas nos requisitos e documentá-las.
    **Modelo Responsável**: Modelo de Documentação.
 
@@ -55,11 +55,11 @@ Garantir que todos os pré-requisitos e estruturas estejam definidos antes do in
    ✅ Criar um plano de testes inicial (testes unitários, integração e validação).
    - **Modelo Responsável**: Modelo de Testes.
 
-4. **Configuração de Ferramentas**
-   - Configurar ferramentas de versionamento (Git).
-   - Configurar ferramentas de CI/CD (se aplicável).
-   - Configurar ferramentas de análise estática de código (ex.: flake8, pylint).
-   - **Modelo Responsável**: Modelo de Desenvolvimento.
+✅ 4. **Configuração de Ferramentas**
+   ✅ Configurar ferramentas de versionamento (Git).
+   ✅ Configurar ferramentas de CI/CD (se aplicável).
+   ✅ Configurar ferramentas de análise estática de código (ex.: flake8, pylint).
+   ✅ **Modelo Responsável**: Modelo de Desenvolvimento.
 
 ### **Duração Estimada**
 5 dias.
@@ -67,31 +67,31 @@ Até 22/05/2026
 
 ---
 
-## **2. Design e Arquitetura**
+✅## **2. Design e Arquitetura**
 
 ### **Objetivo**
 Definir a arquitetura do sistema e os principais componentes.
 
 ### **Tarefas**
-1. **Definição da Arquitetura**
-   - Escolher o padrão arquitetural (ex.: MVC, Clean Architecture).
-   - Definir os principais módulos e suas responsabilidades.
-   - **Modelo Responsável**: Modelo de Desenvolvimento.
+✅ 1. **Definição da Arquitetura**
+   ✅ Escolher o padrão arquitetural (ex.: MVC, Clean Architecture).
+   ✅ Definir os principais módulos e suas responsabilidades.
+   ✅ **Modelo Responsável**: Modelo de Desenvolvimento.
 
-2. **Modelagem de Dados**
-   - Mapear os campos do banco de dados para classes Python (ex.: ORM).
-   - Definir as entidades principais (ex.: Produto, Status, etc.).
-   - **Modelo Responsável**: Modelo de Desenvolvimento.
+✅ 2. **Modelagem de Dados**
+   ✅ Mapear os campos do banco de dados para classes Python (ex.: ORM).
+   ✅ Definir as entidades principais (ex.: Produto, Status, etc.).
+   ✅ **Modelo Responsável**: Modelo de Desenvolvimento.
 
-3. **Definição de Interfaces**
-   - Planejar as interfaces entre os módulos (ex.: integração com SAP e SISCOMEX).
-   - Definir os contratos das APIs (ex.: métodos, parâmetros, respostas).
-   - **Modelo Responsável**: Modelo de Desenvolvimento.
+✅ 3. **Definição de Interfaces**
+   ✅ Planejar as interfaces entre os módulos (ex.: integração com SAP e SISCOMEX).
+   ✅ Definir os contratos das APIs (ex.: métodos, parâmetros, respostas).
+   ✅ **Modelo Responsável**: Modelo de Desenvolvimento.
 
-4. **Documentação da Arquitetura**
-   - Criar diagramas simples (ex.: diagramas de classes, sequência, etc.).
-   - Documentar as decisões arquiteturais.
-   - **Modelo Responsável**: Modelo de Documentação.
+✅ 4. **Documentação da Arquitetura**
+   ✅ Criar diagramas simples (ex.: diagramas de classes, sequência, etc.).
+   ✅ Documentar as decisões arquiteturais.
+   ✅ **Modelo Responsável**: Modelo de Documentação.
 
 ### **Duração Estimada**
 5 dias.
@@ -105,10 +105,10 @@ Até 29/05/2026
 Criar os testes antes do desenvolvimento, seguindo a abordagem TDD (Test-Driven Development).
 
 ### **Tarefas**
-1. **Criação de Testes Unitários**
-   - Escrever testes para cada funcionalidade principal.
-   - Garantir cobertura de código para os cenários críticos.
-   - **Modelo Responsável**: Modelo de Testes.
+✅ 1. **Criação de Testes Unitários**
+   ✅ Escrever testes para cada funcionalidade principal.
+   ✅ Garantir cobertura de código para os cenários críticos.
+   ✅ **Modelo Responsável**: Modelo de Testes.
 
 2. **Criação de Testes de Integração**
    - Testar a comunicação entre os módulos (ex.: SAP ↔ SISCOMEX).
@@ -241,4 +241,9 @@ Contínuo.
 
 # 📌 CONSIDERAÇÕES FINAIS
 
-Com esta atualização, o cronograma agora especifica claramente **qual modelo de IA será responsável por cada tarefa**, garantindo maior organização e clareza no desenvolvimento do projeto.
+Com esta atualização, o cronograma registra a conclusão da Fase 1 com:
+- Fluxo Git via PR validado;
+- Pipeline CI ativo e verde;
+- Padronização de qualidade com `ruff`/`black`;
+- Testes automatizados (`pytest`) em execução local e no CI;
+- Evidência local de testes: **11 passed**.

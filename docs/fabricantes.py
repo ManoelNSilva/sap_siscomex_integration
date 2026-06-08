@@ -1,12 +1,17 @@
 import requests
 from app.auth import obter_autenticacao
 from app.config import (
-    LINK_FILE, DISENGAGEMENT_FILE, URL_MANUFACTURER_LINK,
-    LINK_PROD, PREFIX_CATP, ROOT_CPF_CNPJ
+    LINK_FILE,
+    DISENGAGEMENT_FILE,
+    URL_MANUFACTURER_LINK,
+    LINK_PROD,
+    PREFIX_CATP,
+    ROOT_CPF_CNPJ,
 )
 from app.logger import success, error, info, separator
 from app.reporting import gerar_relatorio
 from app.utils import load_json_file, response_payload, auth_headers, normalize_json
+
 
 def vincula_fabricante():
     set_token, x_csrf_token = obter_autenticacao()
@@ -16,29 +21,31 @@ def vincula_fabricante():
     resultados, sucesso, falha = [], 0, 0
     total = len(fabricantes)
 
-
     for i, fabricante in enumerate(fabricantes, start=1):
         codigo_produto = fabricante.get("codigoProduto")
         codigo_operador = fabricante.get("codigoOperadorEstrangeiro")
-        print(info, f"{i} de {total} - Enviando vínculo: produto={codigo_produto}, operador={codigo_operador}")
+        print(
+            info,
+            f"{i} de {total} - Enviando vínculo: produto={codigo_produto}, operador={codigo_operador}",
+        )
 
         try:
             response = requests.post(
                 URL_MANUFACTURER_LINK,
                 headers=auth_headers(set_token, x_csrf_token, content_type_json=True),
                 json=fabricante,
-                timeout=30
+                timeout=30,
             )
             item = {
                 "indice": i,
                 "codigoProduto": codigo_produto,
                 "codigoOperadorEstrangeiro": codigo_operador,
                 "status_code": response.status_code,
-                "sucesso": response.ok
+                "sucesso": response.ok,
             }
 
             if response.ok:
-                sucesso +=1
+                sucesso += 1
                 item["erro"] = response_payload(response)
                 print(error, f"{i} de {total} - Falha ao vincular.")
                 print(info, normalize_json(item["erro"]))
@@ -46,14 +53,16 @@ def vincula_fabricante():
             resultados.append(item)
         except requests.RequestException as ex:
             falha += 1
-            resultados.append({
-                "indice": i,
-                "codigoProduto": codigo_produto,
-                "codigoOperadorEstrangeiro": codigo_operador,
-                "status_code": None,
-                "sucesso": False,
-                "erro": str(ex)
-            })
+            resultados.append(
+                {
+                    "indice": i,
+                    "codigoProduto": codigo_produto,
+                    "codigoOperadorEstrangeiro": codigo_operador,
+                    "status_code": None,
+                    "sucesso": False,
+                    "erro": str(ex),
+                }
+            )
             print(error, f"{i} de {total} - Erro na requisição: {ex}")
     relatorio, nome_relatorio = gerar_relatorio(
         nome_base="relatorio_vinculos",
@@ -61,7 +70,7 @@ def vincula_fabricante():
         total=total,
         sucesso=sucesso,
         falha=falha,
-        detalhes=resultados
+        detalhes=resultados,
     )
 
     print(separator)
@@ -71,6 +80,7 @@ def vincula_fabricante():
     print(info, f"Relatório salvo em: {nome_relatorio}")
 
     return relatorio
+
 
 def desvincula_fabricante_produto():
     set_token, x_csrf_token = obter_autenticacao()
@@ -83,14 +93,17 @@ def desvincula_fabricante_produto():
     for i, item in enumerate(dados, start=1):
         codigo_produto = item.get("codigoProduto")
         codigo_operador = item.get("codigoOperadorEstrangeiro")
-        print(info, f"{i} de {total} - Desvinculando: produto={codigo_produto}, operador={codigo_operador}")
+        print(
+            info,
+            f"{i} de {total} - Desvinculando: produto={codigo_produto}, operador={codigo_operador}",
+        )
 
         try:
             response = requests.put(
                 url,
                 headers=auth_headers(set_token, x_csrf_token, content_type_json=True),
                 json=item,
-                timeout=30
+                timeout=30,
             )
 
             item_resultado = {
@@ -98,7 +111,7 @@ def desvincula_fabricante_produto():
                 "codigoProduto": codigo_produto,
                 "codigoOperadorEstrangeiro": codigo_operador,
                 "status_code": response.status_code,
-                "sucesso": response.ok
+                "sucesso": response.ok,
             }
 
             if response.ok:
@@ -108,7 +121,7 @@ def desvincula_fabricante_produto():
                 if maybe_json:
                     item_resultado["resposta"] = maybe_json
                 else:
-                    falha += 1 
+                    falha += 1
                     item_resultado["erro"] = response_payload(response)
                     print(error, f"{i} de {total} - Falha ao desvincular.")
                     print(info, normalize_json(item_resultado["erro"]))
@@ -116,14 +129,16 @@ def desvincula_fabricante_produto():
                 resultados.append(item_resultado)
         except requests.RequestException as ex:
             falha += 1
-            resultados.append({
-                "indice": i,
-                "codigoProduto": codigo_produto,
-                "codigoOperadorEstrangeiro": codigo_operador,
-                "status_code": None,
-                "sucesso": False,
-                "erro": str(ex)
-            })
+            resultados.append(
+                {
+                    "indice": i,
+                    "codigoProduto": codigo_produto,
+                    "codigoOperadorEstrangeiro": codigo_operador,
+                    "status_code": None,
+                    "sucesso": False,
+                    "erro": str(ex),
+                }
+            )
             print(error, f"{i} de {total} - Erro na requisição: {ex}")
 
     relatorio, nome_relatorio = gerar_relatorio(
@@ -132,7 +147,7 @@ def desvincula_fabricante_produto():
         total=total,
         sucesso=sucesso,
         falha=falha,
-        detalhes=resultados
+        detalhes=resultados,
     )
 
     print(separator)
@@ -142,16 +157,19 @@ def desvincula_fabricante_produto():
     print(info, f"Relatório salvo em: {nome_relatorio}")
     return relatorio
 
+
 def exporta_vinculos_fabricante_produtos():
     set_token, x_csrf_token = obter_autenticacao()
     url = f"{LINK_PROD}{PREFIX_CATP}/ext/fabricante/exportar/{ROOT_CPF_CNPJ}"
-    response = requests.get(url, headers=auth_headers(set_token, x_csrf_token), timeout=30)
+    response = requests.get(
+        url, headers=auth_headers(set_token, x_csrf_token), timeout=30
+    )
 
     if response.ok:
         print(success, "Consulta realizada com sucesso!")
         print(info, normalize_json(response_payload(response)))
         return response_payload(response)
-    
+
     print(error, "Falha na consulta.")
     print(info, normalize_json(response_payload(response)))
 

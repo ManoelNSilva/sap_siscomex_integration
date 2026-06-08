@@ -8,6 +8,9 @@ Este documento descreve a estrutura de diretórios do projeto **SAP SISCOMEX Int
 
 ```plaintext
 sap_siscomex_integration/
+├── .github/                               
+│   └── workflows/
+│       └── ci.yml                        # Pipeline CI (lint, format, check, testes)
 ├── docs/                                 # Documentação do projeto
 │   ├── project/                          # Documentos de planejamento e requisitos
 │   │   ├── instructions.md               # Instruções gerais do projeto
@@ -20,7 +23,13 @@ sap_siscomex_integration/
 │   │   ├── prompt_documentation.md       # Diretrizes para documentação
 │   │   └── prompt_tests.md               # Diretrizes para testes
 │   ├── technical/                        # Documentação técnica de implementação
+|   |   ├── architecture                  # Arquitetura da solução (fase 2)
 │   │   └── siscomex_api_implementation.md
+│   └── test/                            # Documentação de testes
+│   |   ├── test_strategy.md             # Estratégia de testes
+│   |   ├── traceability_matrix.md       # Rastreabilidade requisito → caso → arquivo
+│   |   ├── test_plan.md                 # Plano executivo de testes
+│   |   └── test_scenarios.md            # Cenários base e incrementais (P0..P3)
 │   └── sap_fields.png                    # Imagem de referência dos campos SAP
 ├── src/                                  # Código-fonte principal
 │   ├── core/                             # Regras centrais de negócio
@@ -38,8 +47,11 @@ sap_siscomex_integration/
 ├── tests/                                # Testes automatizados
 │   ├── integration/                      # Testes de integração
 │   ├── unit/                             # Testes unitários
-│   └── conftest.py                       # Configuração global do pytest
+│   ├── conftest.py                       # Configuração global do pytest
+│   └── pytest.ini                        # Configuração de descoberta e markers do pytest
+
 ├── venv/                                 # Ambiente virtual local (não versionar)
+├── pyproject.toml                        # Configuração de ruff/black
 ├── .gitignore                            # Regras de arquivos ignorados no Git
 ├── README.md                             # Visão geral do projeto
 └── requirements.txt                      # Dependências Python
@@ -53,8 +65,8 @@ sap_siscomex_integration/
 Centraliza toda a documentação:
 - **`project/`**: requisitos, estrutura, instruções e cronograma.
 - **`prompts/`**: guias para uso dos modelos de IA.
-- **`technical/`**: documentação técnica de integração (endpoints, políticas e contratos).
-
+- **`technical/`**: documentação técnica e de arquitetura (fluxo, módulos contratos e API SISCOMEX).
+- **`test/`**: Docmentação de estratégia, plano, cenários e eastreabilidade de testes. 
 > Observação: arquivos `docs/*.py` são referências legadas e não devem ser tratados como código principal de produção.
 
 ### 2) `src/`
@@ -70,8 +82,14 @@ Cobertura automatizada:
 - **`unit/`**: validação isolada de funções/módulos.
 - **`integration/`**: validação ponta a ponta entre módulos e integrações.
 - **`conftest.py`**: fixtures e configuração do `pytest`.
+- **`pytest.ini`**: configuração do `pytest` (descoberta de testes, `addopts`, `markers`).
+
 
 ### 4) Arquivos de configuração
+- **`.github/workflows/ci.yml`**: pipeline CI para `push` e `pull_request` em `main`.
+- **`pyproject.toml`**: configuração padrão de qualidade (`ruff` e `black`).
+- **`tests/pytest.ini`**: configuração do `pytest` (testpaths, padrões de nome e markers).
+
 - **`.gitignore`**: ignora `venv/`, `.env`, cache Python etc.
 - **`requirements.txt`**: dependências necessárias.
 - **`README.md`**: onboarding e visão geral.
@@ -92,4 +110,5 @@ Cobertura automatizada:
 
 - `docs/project/software_requirements.md`
 - `docs/project/naming_conventions.md`
+- `docs/technical/architecture.md`
 - `docs/technical/siscomex_api_implementation.md`
