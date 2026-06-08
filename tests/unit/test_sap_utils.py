@@ -125,7 +125,6 @@ def test_parse_resposta_sap_sucesso() -> None:
     assert resultado is not None
     assert "codigo" in resposta or "ItemCode" in resultado
 
-
 def test_parse_resposta_sap_vazia() -> None:
     """
     Valida tratamento de resposta vazia do SAP.
