@@ -180,3 +180,8 @@ def test_retry_and_idempotency_on_transient_errors(monkeypatch) -> None:
     else:
         assert out["status_http"] == 201
         assert calls["count"] == 3
+
+- resolver = getattr(sap_mod, "TSAPServiceLayer", None)
+- cond_resolver = getattr(sap_mod, "ConditionalRuleResolver", None)
++ _require_callable(sap_mod, "TSAPServiceLayer")
++ cond_resolver = getattr(sap_mod, "ConditionalRuleResolver", None)
