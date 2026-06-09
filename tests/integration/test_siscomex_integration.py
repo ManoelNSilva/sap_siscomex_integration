@@ -198,8 +198,3 @@ def test_cache_stale_behavior_and_fallback(tmp_path, monkeypatch) -> None:
     else:
         # Aceitar resposta que indique modo degraded ou uso de stale cache
         assert isinstance(res, dict) or isinstance(res, list)
-
-- client_cls = _require_callable(TSISCOMEXClient, "__init__")
-- _require_callable(TSISCOMEXClient, "get_required_attributes")
-+ _require_callable(TSISCOMEXClient, "__init__")
-+ _require_callable(TSISCOMEXClient, "get_required_attributes")
